@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stephen Sedrick C. Basilio — BSIT student, aspiring IT professional, and lifelong learner.">
+  <title>Stephen Sedrick C. Basilio | Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-soft: #0d1a2d;
+      --card: rgba(16, 31, 51, 0.78);
+      --text: #edf5ff;
+      --muted: #9eb1c8;
+      --accent: #58a6ff;
+      --accent-2: #7c5cff;
+      --border: rgba(255, 255, 255, 0.09);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(88, 166, 255, 0.14), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(124, 92, 255, 0.12), transparent 28%),
+        var(--bg);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 17, 31, 0.78);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: calc(100vh - 70px);
+      display: grid;
+      place-items: center;
+      padding: 90px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #b8d8ff;
+      background: rgba(88, 166, 255, 0.09);
+      border: 1px solid rgba(88, 166, 255, 0.2);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #5cffb0;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #5cffb0;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      margin-bottom: 25px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #ffffff, #8dc6ff 50%, #a894ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      max-width: 650px;
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 19px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .button.primary {
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .profile-wrap {
+      display: grid;
+      place-items: center;
+    }
+
+    .profile-card {
+      width: min(330px, 80vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 34px;
+      padding: 10px;
+      background: linear-gradient(145deg, rgba(88, 166, 255, 0.7), rgba(124, 92, 255, 0.65));
+      box-shadow: var(--shadow);
+      transform: rotate(3deg);
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 27px;
+      background: #13243a;
+      transform: rotate(-3deg);
+    }
+
+    .photo-fallback {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      border-radius: 27px;
+      background:
+        linear-gradient(145deg, rgba(88,166,255,.12), rgba(124,92,255,.12)),
+        #13243a;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 40px;
+    }
+
+    .section-heading p {
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .section-heading .subheading {
+      color: var(--muted);
+      max-width: 680px;
+      margin-top: 12px;
+    }
+
+    .about-grid,
+    .skills-grid,
+    .credential-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .info-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+    }
+
+    .info-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .info-list strong {
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .info-list span {
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* Skills */
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(88, 166, 255, 0.08);
+      border: 1px solid rgba(88, 166, 255, 0.17);
+      color: #cce4ff;
+      font-size: 0.9rem;
+    }
+
+    /* Journey */
+    .journey {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .journey-item {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .journey-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 15px rgba(88, 166, 255, 0.6);
+    }
+
+    .journey-item h3 {
+      margin-bottom: 5px;
+    }
+
+    .journey-item p {
+      color: var(--muted);
+    }
+
+    /* Goal */
+    .goal {
+      text-align: center;
+      padding: 65px 35px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(88,166,255,.14), transparent 50%),
+        var(--card);
+    }
+
+    .goal blockquote {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      line-height: 1.3;
+      font-weight: 750;
+    }
+
+    .goal p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .contact-icon {
+      min-width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(88, 166, 255, 0.1);
+      border: 1px solid rgba(88, 166, 255, 0.16);
+    }
+
+    .contact-item small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-item a:hover {
+      color: var(--accent);
+    }
+
+    footer {
+      padding: 35px 0 45px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .skills-grid,
+      .journey,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .profile-wrap {
+        order: -1;
+      }
+
+      .profile-card {
+        width: min(270px, 75vw);
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .info-list li {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .info-list span {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#top">S<span>SB</span>.</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">BSIT Student · Future IT Professional</div>
+
+          <h1>
+            Hi, I'm<br>
+            <span class="gradient-text">Stephen Sedrick.</span>
+          </h1>
+
+          <p class="hero-description">
+            I'm a 3rd-year Bachelor of Science in Information Technology student
+            at Mabalacat City College. I enjoy learning technology, building
+            practical skills, and finding ways to make life a little more fun
+            along the way.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="button primary" href="#about">Get to know me</a>
+            <a class="button" href="#contact">Let's connect</a>
+          </div>
+        </div>
+
+        <div class="profile-wrap">
+          <div class="profile-card">
+            
+            <img
+              class="profile-photo"
+              src="profile.png"
+              alt="Profile photo of Stephen Sedrick C. Basilio"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <p>01 / About Me</p>
+          <h2>A student with a passion for technology.</h2>
+          <div class="subheading">
+            I'm currently building my foundation in IT while developing the
+            communication, research, networking, and technical skills I hope to
+            bring into my future career.
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <h3>My story</h3>
+            <p>
+              I am a 3rd-year BSIT student at Mabalacat City College. Throughout
+              my studies, I've explored programming, web development, networking,
+              documentation, and digital design. I was also a class secretary,
+              where I gained experience preparing papers and research documents.
+            </p>
+            <br>
+            <p>
+              Outside the classroom, I take care of my home's internet security,
+              including managing connected devices and deciding which devices
+              are permitted to access the network. These experiences have helped
+              me become more curious, responsible, and hands-on with technology.
+            </p>
+          </article>
+
+          <aside class="card">
+            <h3>Quick facts</h3>
+            <ul class="info-list">
+              <li><strong>Education</strong><span>BS Information Technology</span></li>
+              <li><strong>Year Level</strong><span>3rd Year</span></li>
+              <li><strong>School</strong><span>Mabalacat City College</span></li>
+              <li><strong>Location</strong><span>Dapdap, Mabalacat, Pampanga</span></li>
+              <li><strong>Languages</strong><span>Filipino · English</span></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <p>02 / Skills</p>
+          <h2>What I can work with.</h2>
+          <div class="subheading">
+            A growing toolkit built through college, personal projects, and
+            everyday problem-solving.
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <article class="card">
+            <h3>Programming & Web</h3>
+            <p>Languages and technologies I've been learning and using.</p>
+            <div class="skill-group">
+              <span class="tag">Java</span>
+              <span class="tag">Python</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Creative & Documentation</h3>
+            <p>Skills that support presentations, schoolwork, and communication.</p>
+            <div class="skill-group">
+              <span class="tag">Canva</span>
+              <span class="tag">Research Writing</span>
+              <span class="tag">Paper Writing</span>
+              <span class="tag">Documentation</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Networking & Security</h3>
+            <p>
+              Practical experience managing my home's network and controlling
+              which devices are allowed to connect.
+            </p>
+            <div class="skill-group">
+              <span class="tag">Network Management</span>
+              <span class="tag">Access Control</span>
+              <span class="tag">Internet Security</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Communication</h3>
+            <p>
+              Comfortable communicating in both Filipino and English, with
+              experience handling class documentation and responsibilities.
+            </p>
+            <div class="skill-group">
+              <span class="tag">Filipino</span>
+              <span class="tag">English</span>
+              <span class="tag">Teamwork</span>
+              <span class="tag">Organization</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section id="journey">
+      <div class="container">
+        <div class="section-heading">
+          <p>03 / My Journey</p>
+          <h2>Learning today. Building tomorrow.</h2>
+        </div>
+
+        <div class="journey">
+          <article class="card journey-item">
+            <h3>BSIT Student</h3>
+            <p>
+              Currently in my third year at Mabalacat City College, developing
+              my skills in programming, web technologies, networking, and IT.
+            </p>
+          </article>
+
+          <article class="card journey-item">
+            <h3>Class Secretary</h3>
+            <p>
+              Took responsibility for class documentation and developed
+              experience writing papers and research documents.
+            </p>
+          </article>
+
+          <article class="card journey-item">
+            <h3>Cisco Networking Academy</h3>
+            <p>
+              Earned an IT Essentials certificate and a CCNA: Introduction to
+              Networks certificate.
+            </p>
+          </article>
+
+          <article class="card journey-item">
+            <h3>Future Goal</h3>
+            <p>
+              Graduate with a BSIT degree and pursue an IT career abroad,
+              particularly in Dubai, UAE, while working toward reuniting with
+              my family.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOAL -->
+    <section>
+      <div class="container">
+        <div class="card goal">
+          <blockquote>
+            “Life is just a game — you should try to enjoy it.”
+          </blockquote>
+          <p>
+            This is the mindset I try to carry as I learn, make mistakes,
+            improve, and keep moving toward the future I want.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <p>04 / Contact</p>
+          <h2>Let's connect.</h2>
+          <div class="subheading">
+            If you'd like to reach me, you can use any of the contact details below.
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="card contact-item">
+            <div class="contact-icon">✉</div>
+            <div>
+              <small>Email</small>
+              <a href="mailto:storytellerseddy@gmail.com">
+                storytellerseddy@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <div class="card contact-item">
+            <div class="contact-icon">☎</div>
+            <div>
+              <small>Phone</small>
+              <a href="tel:+639628347274">+63 962 834 7274</a>
+            </div>
+          </div>
+
+          <div class="card contact-item">
+            <div class="contact-icon">⌖</div>
+            <div>
+              <small>Location</small>
+              <span>Dapdap, Mabalacat, Pampanga</span>
+            </div>
+          </div>
+
+          <div class="card contact-item">
+            <div class="contact-icon">◈</div>
+            <div>
+              <small>Education</small>
+              <span>Mabalacat City College · BSIT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Stephen Sedrick C. Basilio · Built with HTML & CSS
+    </div>
+  </footer>
+</body>
+</html>
